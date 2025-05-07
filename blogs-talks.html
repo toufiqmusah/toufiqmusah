@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blogs & Talks - Toufiq Musah</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="images/notion-face.png" width="50" height="50">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        header {
+            width: 100%;
+            margin-bottom: 30px;
+        }
+        
+        main {
+            flex: 1;
+            width: 100%;
+        }
+        
+        .navigation {
+            position: relative;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 70px 20px 30px;
+            background: transparent;
+            box-shadow: none;
+            z-index: 1000;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+            margin-top: 0;
+        }
+        
+        .floating-dino {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+            z-index: 1000;
+            background-color: rgba(245, 245, 245, 0.9);
+            padding: 8px 15px;
+            border-radius: 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            backdrop-filter: blur(5px);
+            transition: all 0.3s ease;
+        }
+        
+        .floating-dino span {
+            margin-left: 10px;
+            font-weight: 600;
+            font-size: 18px;
+        }
+        
+        .floating-icon {
+            position: fixed;
+            top: 20px;
+            left: 30px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            overflow: hidden;
+            z-index: 1000;
+        }
+        
+        .floating-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .nav-dino {
+            display: flex;
+            align-items: center;
+            font-size: 20px;
+        }
+        
+        .nav-dino span {
+            margin-left: 10px;
+            font-weight: 600;
+            font-size: 18px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Floating elements -->
+    <div class="theme-toggle" title="Toggle Dark/Light Mode" onclick="toggleDarkMode()">
+        <i class="fas fa-moon"></i>
+    </div>
+    <div class="floating-icon">
+        <img src="images/notion-face.png" alt="Icon">
+    </div>
+    
+    <header>
+        <nav class="navigation">
+            <div class="navigation-buttons">
+                <button onclick="window.location.href='index.html'">Home</button>
+                <button onclick="window.location.href='research.html'">Research</button>
+                <button onclick="window.location.href='work-experience.html'">Work Experience</button>
+                <button onclick="window.location.href='projects.html'">Projects</button>
+                <button onclick="window.location.href='blogs-talks.html'">Blogs & Talks</button>
+                <button onclick="window.location.href='extras.html'">Extras</button>
+            </div>
+            <div class="nav-dino">
+                🦖 <span>focusing</span>
+            </div>
+        </nav>
+    </header>
+
+    <main class="content">
+        <section id="blogs-talks">
+            <h2>Blogs & Talks</h2>
+            <div class="research-category">
+                <h3>Blog Posts</h3>
+                <div class="research-item">
+                    <h4>Introduction to TorchIO for 3D MRI Processing & Preprocessing Transforms (Part 1)</h4>
+                    <p>Published: Medium</p>
+                    <p>A comprehensive guide to using TorchIO for 3D MRI processing and preprocessing transforms.</p>
+                    <a href="https://medium.com/@toufiqmusah32/introduction-to-torchio-for-3d-mri-processing-preprocessing-transforms-part-1-87947c339400" class="project-link" target="_blank">Read on Medium</a>
+                </div>
+                <div class="research-item">
+                    <h4>How to Make an Image Classification Model: Is It a Cat or a Dog?</h4>
+                    <p>Published: Instructables</p>
+                    <p>A step-by-step tutorial on building an image classification model to distinguish between cats and dogs.</p>
+                    <a href="https://www.instructables.com/How-to-Make-an-Image-Classification-Model-Is-It-a-/" class="project-link" target="_blank">Read on Instructables</a>
+                </div>
+                <div class="research-item">
+                    <h4>End-to-End Deep Learning Tutorial for Image Classification: Pneumonia Detection from Chest X-Ray Scans</h4>
+                    <p>Published: Google Colab</p>
+                    <p>A comprehensive tutorial on building and training a deep learning model for pneumonia detection using chest X-ray images.</p>
+                    <a href="https://colab.research.google.com/drive/12T1Lavr3RqdJWOfeQ7-QIjPPUj2fcdYD?usp=sharing" class="project-link" target="_blank">View Colab Notebook</a>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <div class="floating-dino">
+        🦖 <span>focusing</span>
+    </div>
+    
+    <script src="script.js"></script>
+    <script src="darkmode.js"></script>
+</body>
+
+</html>
