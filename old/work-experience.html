@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Work Experience - Toufiq Musah</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="images/notion-face.png" width="50" height="50">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        header {
+            width: 100%;
+            margin-bottom: 30px;
+        }
+        
+        main {
+            flex: 1;
+            width: 100%;
+        }
+        
+        .navigation {
+            position: relative;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 70px 20px 30px;
+            background: transparent;
+            box-shadow: none;
+            z-index: 1000;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+            margin-top: 0;
+        }
+        
+        .nav-dino {
+            display: flex;
+            align-items: center;
+            font-size: 20px;
+        }
+        
+        .nav-dino span {
+            margin-left: 10px;
+            font-weight: 600;
+            font-size: 18px;
+        }
+        
+        .floating-icon {
+            position: fixed;
+            top: 20px;
+            left: 30px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            overflow: hidden;
+            z-index: 1000;
+        }
+        
+        .floating-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .floating-dino {
+            position: fixed;
+            bottom: 20px;
+            right: 30px;
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+            z-index: 1000;
+        }
+        
+        .floating-dino span {
+            margin-left: 10px;
+            font-weight: 600;
+            font-size: 18px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Floating elements -->
+    <div class="theme-toggle" title="Toggle Dark/Light Mode" onclick="toggleDarkMode()">
+        <i class="fas fa-moon"></i>
+    </div>
+    <div class="floating-icon">
+        <img src="images/notion-face.png" alt="Icon">
+    </div>
+    
+    <header>
+        <nav class="navigation">
+            <div class="navigation-buttons">
+                <button onclick="window.location.href='index.html'">Home</button>
+                <button onclick="window.location.href='research.html'">Research</button>
+                <button onclick="window.location.href='work-experience.html'">Work Experience</button>
+                <button onclick="window.location.href='projects.html'">Projects</button>
+                <button onclick="window.location.href='blogs-talks.html'">Blogs & Talks</button>
+                <button onclick="window.location.href='extras.html'">Extras</button>
+            </div>
+            <div class="nav-dino">
+                🦖 <span>focusing</span>
+            </div>
+        </nav>
+    </header>
+
+    <main class="content">
+        <section id="work-experience">
+            <h2>Work Experience</h2>
+            <div class="experience-item">
+                <h3>Kumasi Centre for Collaborative Research in Tropical Medicine</h3>
+                <p class="job-title">Research Assistant, Engineering Research</p>
+                <div class="job-info">
+                    <span class="job-location">Kumasi, Ghana</span>
+                    <span class="job-duration">Oct 2024 - Till Date</span>
+                </div>
+                <ul>
+                    <li>Research in Digital Health and Artificial Intelligence under the Global Health and Infectious
+                        Diseases (GHID) Group</li>
+                </ul>
+            </div>
+            <div class="experience-item">
+                <h3>Responsible Artificial Intelligence Lab (RAIL)</h3>
+                <p class="job-title">Research Assistant, Intern – Machine Learning</p>
+                <div class="job-info">
+                    <span class="job-location">Kumasi, Ghana</span>
+                    <span class="job-duration">Oct 2023 – Feb 2024</span>
+                </div>
+                <ul>
+                    <li>Conducted extensive literature reviews across multiple domains of machine learning/deep
+                        learning, including Generative Adversarial Networks (GANs) and Machine Learning Applications in
+                        Biomedical Engineering.</li>
+                    <li>Built a Generative Model to produce high resolution, denoised CT scan images out of
+                        low-resolution variants, using Keras.</li>
+                </ul>
+            </div>
+            <div class="experience-item">
+                <h3>Sesi Technologies Limited</h3>
+                <p class="job-title">Engineering Intern</p>
+                <div class="job-info">
+                    <span class="job-location">Kumasi, Ghana</span>
+                    <span class="job-duration">Sept 2021 – Nov 2021</span>
+                </div>
+                <ul>
+                    <li>Built User-Interface components to assist in the digitization of much needed agricultural
+                        technologies.</li>
+                    <li>Designed and implemented a custom computer mouse, sourcing specialized components and utilizing
+                        3D printing techniques for assembly.</li>
+                </ul>
+            </div>
+            <div class="experience-item">
+                <h3>37 Military Hospital</h3>
+                <p class="job-title">Biomedical Engineering Intern</p>
+                <div class="job-info">
+                    <span class="job-location">Accra, Ghana</span>
+                    <span class="job-duration">Dec 2022 – Jan 2023</span>
+                </div>
+                <ul>
+                    <li>Assisted in routine maintenance checks on various medical equipment including autoclaves and
+                        surgery lightening equipment.</li>
+                    <li>Supported quality control processes through testing and evaluations, ensuring medical devices
+                        met organizational and regulatory standards.</li>
+                </ul>
+            </div>
+            <div class="experience-item">
+                <h3>Teaching Assistant & Private Tutoring</h3>
+                <p class="job-title">Teaching</p>
+                <div class="job-info">
+                    <span class="job-location">Accra, Ghana</span>
+                    <span class="job-duration">Aug 2019 – Feb 2022</span>
+                </div>
+                <ul>
+                    <li>Aided in the curation of a teaching curriculum to improve classroom learning experience.</li>
+                    <li>Tutored students one-on-one in various subjects including; Science, Physics, Chemistry,
+                        Mathematics.</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+    
+    <div class="floating-dino">
+        🦖 <span>focusing</span>
+    </div>
+    
+    <script src="script.js"></script>
+    <script src="darkmode.js"></script>
+</body>
+
+</html>

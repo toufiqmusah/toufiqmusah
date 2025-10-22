@@ -1,528 +1,466 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Toufiq Musah</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="icon" type="image/x-icon" href="images/notion-face.png" width="50" height="50">
+    <title>Toufiq Musah - Academic Portfolio</title>
     <style>
+        * {margin: 0; padding: 0; box-sizing: border-box;}
+        
+        /* CSS Variables for theming */
         :root {
-            --bg-color: #fcfcfc;
-            --text-color: #2c3e50;
-            --heading-color: #2c3e50;
-            --highlight-color: #3498db;
-            --card-bg: #f9f9f9;
-            --card-border: #3498db;
-            --card-shadow: rgba(0, 0, 0, 0.05);
-            --news-bg: #f5f9ff;
-            --news-border: rgba(52, 152, 219, 0.3);
-            --news-date-bg: #3498db;
-            --news-date-text: white;
-            --social-bg: #f5f5f5;
-            --profile-border: #f5f5f5;
-            --icons-text: #95a5a6;
+            --bg-primary: #ffffff;
+            --bg-secondary: #f9f9f9;
+            --bg-nav: #ffffff;
+            --text-primary: #333333;
+            --text-secondary: #666666;
+            --text-light: #999999;
+            --accent-primary: #0066cc;
+            --accent-hover: #0f4c3a;
+            --border-color: #dddddd;
+            --shadow-sm: 0 2px 4px rgba(0,0,0,0.1);
+            --shadow-md: 0 8px 20px rgba(0,0,0,0.22);
+            --paper-bg: #eeeeee;
         }
         
-        .dark-mode {
-            --bg-color: #1a1a2e;
-            --text-color: #e0e0e0;
-            --heading-color: #f0f0f0;
-            --highlight-color: #4dabf7;
-            --card-bg: #252541;
-            --card-border: #4dabf7;
-            --card-shadow: rgba(0, 0, 0, 0.2);
-            --news-bg: #252541;
-            --news-border: rgba(77, 171, 247, 0.3);
-            --news-date-bg: #4dabf7;
-            --news-date-text: #f0f0f0;
-            --social-bg: #2a2a45;
-            --profile-border: #2a2a45;
-            --icons-text: #b0b0b0;
+        [data-theme="dark"] {
+            --bg-primary: #1a1a1a;
+            --bg-secondary: #242424;
+            --bg-nav: #1f1f1f;
+            --text-primary: #e0e0e0;
+            --text-secondary: #b0b0b0;
+            --text-light: #888888;
+            --accent-primary: #4a9eff;
+            --accent-hover: #66b3ff;
+            --border-color: #3a3a3a;
+            --shadow-sm: 0 2px 4px rgba(0,0,0,0.3);
+            --shadow-md: 0 8px 20px rgba(0,0,0,0.5);
+            --paper-bg: #2a2a2a;
         }
         
-        body {
-            margin: 0;
-            padding: 0;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-        }
+        body {font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; color: var(--text-primary); background: var(--bg-primary); transition: background-color 0.3s ease, color 0.3s ease;}
+
+        /* Navigation */
+        nav {display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 4rem; background: var(--bg-nav); box-shadow: var(--shadow-sm); position: fixed; width: 100%; top: 0; z-index: 1000; transition: background-color 0.3s ease;}
+        .logo {font-size: 1.5rem; font-weight: 700; color: var(--text-primary); display: flex; align-items: center; gap: 0.5rem;}
+        .logo img {width: 32px; height: 32px; border-radius: 50%;}
+        .nav-links {display: flex; gap: 2.5rem; list-style: none; align-items: center;}
+        .nav-links a {text-decoration: none; color: var(--text-primary); font-size: 1.1rem; font-weight: 500; transition: color 0.3s;}
+        .nav-links a:hover {color: var(--accent-primary);}
         
-        header {
-            width: 100%;
-            margin-bottom: 30px;
-        }
-        
-        main {
-            flex: 1;
-            width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .navigation {
-            position: relative;
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 70px 20px 30px;
-            background: transparent;
-            box-shadow: none;
-            z-index: 1000;
-            flex-wrap: wrap;
-            margin-bottom: 30px;
-            margin-top: 0;
-        }
-        
-        .home-page {
-            padding-top: 0;
-            margin-top: -40px;
-            min-height: 60vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            animation: fadeIn 0.8s ease-in-out;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .nav-dino {
-            display: flex;
-            align-items: center;
-            font-size: 20px;
-        }
-        
-        .nav-dino span {
-            margin-left: 10px;
-            font-weight: 600;
-            font-size: 18px;
-        }
-        
-        .floating-icon {
-            position: fixed;
-            top: 20px;
-            left: 30px;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            overflow: hidden;
-            z-index: 1000;
-        }
-        
-        .floating-icon img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        
-        .home-content-wrapper {
-            display: flex;
-            align-items: flex-start;
-            justify-content: space-between;
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        
-        .brief {
-            margin-right: 40px;
-            flex: 1;
-        }
-        
-        .intro {
-            margin-bottom: 10px;
-            animation: slideIn 0.8s ease-in-out;
-        }
-        
-        @keyframes slideIn {
-            from { opacity: 0; transform: translateX(-20px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
-        
-        .intro h1 {
-            margin-bottom: 5px;
-            font-size: 2.5rem;
-            color: var(--heading-color);
-        }
-        
-        .intro h2 {
-            font-size: 2.2rem;
-            margin-top: 0;
-            color: var(--heading-color);
-        }
-        
-        .name {
-            color: var(--highlight-color);
-            position: relative;
-            display: inline-block;
-        }
-        
-        .name::after {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 3px;
-            bottom: -5px;
-            left: 0;
-            background-color: var(--highlight-color);
-            border-radius: 3px;
-        }
-        
-        .bio-message {
-            margin-top: 25px;
-            max-width: 600px;
-            line-height: 1.6;
-            background-color: var(--card-bg);
-            padding: 20px 25px;
-            border-radius: 10px;
-            border-left: 4px solid var(--card-border);
-            box-shadow: var(--card-shadow);
-            animation: fadeInUp 1s ease-in-out;
-        }
-        
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .role {
-            font-size: 1.2rem;
-            font-weight: 500;
-            color: var(--heading-color);
-            margin-bottom: 15px;
-        }
-        
-        .specialties {
-            font-size: 1.1rem;
-            font-weight: 500;
-            margin-bottom: 10px;
-        }
-        
-        .expertise-areas {
-            list-style-type: none;
-            padding-left: 5px;
-            margin-top: 10px;
-        }
-        
-        .expertise-areas li {
-            position: relative;
-            padding-left: 25px;
-            margin-bottom: 10px;
-            font-size: 1.1rem;
-        }
-        
-        .expertise-areas li:before {
-            content: '→';
-            position: absolute;
-            left: 0;
-            color: var(--highlight-color);
-            font-weight: bold;
-        }
-        
-        .highlight {
-            color: var(--highlight-color);
-            font-weight: 500;
-        }
-        
-        .profile-section {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            animation: fadeInRight 0.8s ease-in-out;
-        }
-        
-        @keyframes fadeInRight {
-            from { opacity: 0; transform: translateX(20px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
-        
-        .profile-img-container {
-            width: 240px;
-            height: 240px;
-            border-radius: 50%;
-            overflow: hidden;
-            border: 5px solid var(--profile-border);
-            box-shadow: 0 8px 25px var(--card-shadow);
-            transition: all 0.5s ease;
-            position: relative;
-        }
-        
-        .profile-img-container:hover {
-            transform: scale(1.05);
-            box-shadow: 0 12px 30px var(--card-shadow);
-        }
-        
-        .profile-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center;
-            display: block;
-        }
-        
-        .social-links {
-            display: flex;
-            gap: 15px;
-            margin-top: 60px;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-        }
-        
-        .social-links::before {
-            content: '';
-            position: absolute;
-            top: -20px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 40px;
-            height: 3px;
-            background-color: var(--highlight-color);
-            border-radius: 3px;
-            opacity: 0.5;
-        }
-        
-        .social-links a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            background-color: var(--social-bg);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        
-        .social-links a:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-        }
-        
-        .social-links a img {
-            width: 24px;
-            height: 24px;
-        }
-        
-        .icons-by {
-            font-size: 0.8rem;
-            color: var(--icons-text);
-            margin-top: 10px;
-            text-align: center;
-        }
-        
-        .floating-dino {
-            position: fixed;
-            bottom: 20px;
-            right: 30px;
-            font-size: 24px;
-            display: flex;
-            align-items: center;
-            z-index: 1000;
-        }
-        
-        .floating-dino span {
-            margin-left: 10px;
-            font-weight: 600;
-            font-size: 18px;
-        }
-        
-        .spacer {
-            height: 50px;
-        }
-        
-        .news-section {
-            max-width: 800px;
-            margin: 30px auto 20px;
-            padding: 20px 25px;
-            background-color: var(--news-bg);
-            border-radius: 10px;
-            box-shadow: 0 4px 15px var(--card-shadow);
-            animation: fadeIn 0.8s ease-in-out;
-            border-top: 3px solid var(--highlight-color);
-        }
-        
-        .news-heading {
-            font-size: 1.3rem;
-            color: var(--heading-color);
-            margin-top: 0;
-            margin-bottom: 15px;
-            padding-bottom: 10px;
-            border-bottom: 1px solid var(--news-border);
-        }
-        
-        .news-item {
-            display: flex;
-            margin-bottom: 15px;
-            align-items: flex-start;
-        }
-        
-        .news-date {
-            background-color: var(--news-date-bg);
-            color: var(--news-date-text);
-            padding: 5px 10px;
-            border-radius: 5px;
-            font-size: 0.9rem;
-            font-weight: 500;
-            margin-right: 15px;
-            min-width: 80px;
-            text-align: center;
-        }
-        
-        .news-content {
-            flex: 1;
-            line-height: 1.5;
-            font-size: 1.05rem;
-            color: var(--text-color);
-        }
-        
-        .news-content a {
-            color: var(--highlight-color);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-        
-        .news-content a:hover {
-            color: #2980b9;
-            text-decoration: underline;
+        /* Dark mode toggle */
+        .theme-toggle {background: none; border: none; cursor: pointer; font-size: 1.3rem; padding: 0.5rem; display: flex; align-items: center; transition: opacity 0.3s ease; color: var(--text-primary);}
+        .theme-toggle:hover {opacity: 0.7;}
+        .theme-toggle svg {width: 20px; height: 20px; fill: currentColor;}
+
+        /* Hero */
+    .hero {background: linear-gradient(135deg, rgba(1, 31, 28, 0.886) 0%, rgba(0, 8, 29, 0.918) 100%), url('assets/background.webp') center/cover no-repeat; min-height: 100vh; display: flex; align-items: center; padding: 6rem 4rem 4rem; margin-top: 80px;}
+    .hero-content {position: relative; display: grid; grid-template-columns: 400px 1fr; gap: 6rem; max-width: 1400px; margin: 0 auto; width: 100%;}
+        .profile-section {text-align: center; color: white;}
+        .profile-image {width: 280px; height: 280px; border-radius: 50%; margin: 0 auto 2rem; overflow: hidden; background: #d3d3d3;}
+        .profile-image img {width: 100%; height: 100%; object-fit: cover;}
+        .profile-name {font-size: 2rem; font-weight: 700; margin-bottom: 0.5rem;}
+        .profile-title {font-size: 1.4rem; font-weight: 600; margin-bottom: 0.5rem;}
+        .profile-org {font-size: 1.2rem; margin-bottom: 2rem;}
+        .social-links {display: flex; justify-content: center; gap: 1.5rem; margin-top: 2rem;}
+        .social-links a {color: white; font-size: 1.8rem; transition: transform 0.3s;}
+        .social-links a:hover {transform: scale(1.1);}
+
+        .about-section {color: white;}
+        .about-section h1 {font-size: 3rem; margin-bottom: 2rem;}
+        .about-text {font-size: 1.25rem; line-height: 1.8; margin-bottom: 2rem; opacity: 0.95;}
+
+    /* News panel (embedded in hero) */
+    .news-panel {position: static; width: 100%; max-width: 100%; max-height: 240px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.18); box-shadow: 0 8px 20px rgba(0,0,0,0.22); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); border-radius: 12px; padding: 0.75rem 0.75rem; color: #fff; overflow: hidden; z-index: 5; margin-top: 0.75rem; text-align: left;}
+    .news-header {display: flex; align-items: center; justify-content: flex-start; margin-bottom: 0.25rem;}
+    .news-title {font-size: 0.85rem; font-weight: 700; letter-spacing: 0.2px; opacity: 0.95;}
+    .news-body {max-height: 180px; overflow-y: auto; padding-right: 2px;}
+    .news-list {list-style: none; display: flex; flex-direction: column; gap: 0.4rem; margin: 0;}
+    .news-item {font-size: 0.75rem; line-height: 1.3; opacity: 0.95;}
+    .news-item time {display: block; font-size: 0.7rem; opacity: 0.8; margin-top: 0.25rem;}
+
+        /* Info grid */
+        .info-grid {display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin-top: 2rem;}
+        .info-section h2 {font-size: 1.8rem; margin-bottom: 1.5rem;}
+        .info-section li {font-size: 1.15rem; margin-bottom: 1rem;}
+
+        /* Papers */
+        #papers {padding: 6rem 4rem; max-width: 1100px; margin: auto; background: var(--bg-primary); transition: background-color 0.3s ease;}
+        #papers h2 {font-size: 2rem; margin-bottom: 2rem; color: var(--accent-hover);}
+        .paper-item {display: grid; grid-template-columns: 150px 1fr; gap: 2rem; margin-bottom: 2rem; align-items: center;}
+        .paper-image {width: 150px; height: 100px; background: var(--paper-bg); border-radius: 8px; cursor: pointer; transition: transform 0.3s;}
+        .paper-image:hover {transform: scale(1.05);}
+        .paper-details h3 {font-size: 1.2rem; margin-bottom: 0.5rem; color: var(--text-primary);}
+        .paper-details p {font-size: 1rem; opacity: 0.9; color: var(--text-secondary);}
+        .paper-details a {color: var(--accent-primary); text-decoration: none; transition: color 0.3s;}
+        .paper-details a:hover {color: var(--accent-hover);}
+
+        /* Lightbox */
+        .lightbox {display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.9); z-index: 2000; justify-content: center; align-items: center; cursor: pointer;}
+        .lightbox.active {display: flex;}
+        .lightbox img {max-width: 90%; max-height: 90%; object-fit: contain; border-radius: 8px;}
+
+        /* Education */
+        .education-item {margin-bottom: 1rem;}
+        .education-item h3 {font-size: 1.1rem; margin-bottom: 0.3rem;}
+        .education-item p {font-size: 1rem; opacity: 0.9;}
+
+        /* Experience */
+        .experience-list {margin-top: 1.5rem;}
+        .experience-item {display: flex; align-items: center; gap: 1.2rem; margin-bottom: 1.2rem;}
+        .experience-logo {width: 50px; height: 50px; border-radius: 8px; object-fit: contain;}
+        .experience-info h3 {font-size: 1.1rem; font-weight: 600; margin-bottom: 0.2rem;}
+        .experience-info p {font-size: 0.95rem; opacity: 0.9;}
+
+    /* Talks & Tutorials */
+    #talks {padding: 6rem 4rem; max-width: 1100px; margin: auto; background: var(--bg-secondary); transition: background-color 0.3s ease;}
+    .talks-grid {display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;}
+    .talks-grid .talk-item {margin: 0; padding-bottom: 0; border-bottom: none;}
+        #talks h2 {font-size: 2rem; margin-bottom: 2rem; color: var(--accent-hover);}
+        .talk-item {display: grid; grid-template-columns: 150px 1fr; gap: 2rem; margin-bottom: 2.5rem; padding-bottom: 2rem; border-bottom: 1px solid var(--border-color); align-items: center;}
+        .talk-item:last-child {border-bottom: none; padding-bottom: 0;}
+        .talk-image {display: block; width: 150px; height: 100px; background: var(--paper-bg); border-radius: 8px; overflow: hidden; cursor: pointer; transition: transform 0.3s;}
+        .talk-image:hover {transform: scale(1.05);}
+        .talk-image img {width: 100%; height: 100%; object-fit: cover; border-radius: 8px;}
+        .talk-details h3 {font-size: 1.25rem; font-weight: 600; margin-bottom: 0.5rem; color: var(--text-primary);}
+        .talk-details h3 a {color: var(--accent-primary); text-decoration: none; transition: color 0.3s;}
+        .talk-details h3 a:hover {color: var(--accent-hover);}
+        .talk-details p {font-size: 1rem; color: var(--text-secondary);}
+        .talk-details p a {color: var(--accent-primary); text-decoration: none; transition: color 0.3s;}
+        .talk-details p a:hover {text-decoration: underline;}
+
+        @media (max-width: 900px) {
+            .hero-content {grid-template-columns: 1fr; text-align: center;}
+            .news-panel {position: static; width: 100%; max-width: none; max-height: 240px; margin-top: 1rem;}
+            .info-grid {grid-template-columns: 1fr;}
+            .paper-item {grid-template-columns: 1fr;}
+            .talk-item {grid-template-columns: 1fr;}
+            .talks-grid {grid-template-columns: 1fr;}
         }
     </style>
 </head>
-
 <body>
-    <!-- Floating elements -->
-    <div class="floating-icon">
-        <img src="images/notion-face.png" alt="Icon">
-    </div>
-    
-    <header>
-        <nav class="navigation">
-            <div class="navigation-buttons">
-                <button onclick="window.location.href='index.html'" class="active">Home</button>
-                <button onclick="window.location.href='research.html'">Research</button>
-                <button onclick="window.location.href='work-experience.html'">Work Experience</button>
-                <button onclick="window.location.href='projects.html'">Projects</button>
-                <button onclick="window.location.href='blogs-talks.html'">Blogs & Talks</button>
-                <button onclick="window.location.href='extras.html'">Extras</button>
-            </div>
-            <div class="nav-dino">
-                🦖 <span>focusing</span>
-            </div>
-        </nav>
-    </header>
+    <nav>
+        <div class="logo">
+            <img src="assets/notion-face.png" alt="Toufiq Musah">
+            Toufiq Musah
+        </div>
+        <ul class="nav-links">
+            <li><a href="#bio">Bio</a></li>
+            <li><a href="#papers">Papers</a></li>
+            <li><a href="#talks">Talks</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li>
+                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+                    <svg id="moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                    </svg>
+                    <svg id="sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="display: none;">
+                        <circle cx="12" cy="12" r="5"/>
+                        <line x1="12" y1="1" x2="12" y2="3"/>
+                        <line x1="12" y1="21" x2="12" y2="23"/>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+                        <line x1="1" y1="12" x2="3" y2="12"/>
+                        <line x1="21" y1="12" x2="23" y2="12"/>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+                    </svg>
+                </button>
+            </li>
+        </ul>
+    </nav>
 
-    <main class="content">
-        <section id="home" class="home-page">
-            <div class="dot"></div>
+    <section class="hero" id="bio">
+        <div class="hero-content">
+            <div class="profile-section"> 
+                <div class="profile-image"><img src="assets/headshot.jpeg" alt="Toufiq Musah"></div>
+                <div class="profile-name">Toufiq Musah</div>
+                <div class="profile-title">MSE Data Science Student</div>
+                <div class="profile-org">University of Pennsylvania</div>
+                <div class="social-links">
+                    <a href="mailto:toufiqmusah32@gmail.com" target="_blank" rel="noopener noreferrer"><img src="assets/icons8-mail-48.png" alt="Email" width="30px"></a>
+                    <a href="https://github.com/toufiqmusah" target="_blank" rel="noopener noreferrer"><img src="assets/icons8-github.svg" alt="GitHub" width="30px"></a>
+                    <a href="https://www.linkedin.com/in/toufiqmusah" target="_blank" rel="noopener noreferrer"><img src="assets/icons8-linkedin.svg" alt="LinkedIn" width="30px"></a>
+                    <a href="https://scholar.google.de/citations?user=-xMHIT0AAAAJ&hl=en" target="_blank" rel="noopener noreferrer"><img src="assets/scholar-image.png" alt="Google Scholar" width="30px"></a>
+                    <a href="images/toufiq-cv.pdf" target="_blank" rel="noopener noreferrer"><img src="assets/cv-logo.png" alt="Resume" width="30px"></a>
+                </div>
 
-            <div class="home-content-wrapper">
-                <div class="brief">
-                    <h4>🚧<span style="color: red;">This site is under construction</span></h4>
-                    <div class="intro">
-                        <h1>Hi,</h1>
-                        <h2><span class="im">I'm</span> <span class="name">Toufiq Musah</span></h2>
+                <div class="news-panel" aria-label="Latest news">
+                    <div class="news-header">
+                        <div class="news-title" style="width:100%; text-align:center;">News</div>
                     </div>
-                    <div class="bio-message">
-                        <p class="role">a researcher and engineer working on developing intelligent systems for equitable, data-driven healthcare.</p>
-                        <p class="specialties">My work spans:</p>
-                        <ul class="expertise-areas">
-                            <li>Medical Imaging (<span class="highlight">neuroimaging</span>) Analysis</li>
-                            <li>Language Modeling for Healthcare Applications</li>
-                            <li>Health AI for Underserved Communities</li>
+                    <div class="news-body">
+                        <ul class="news-list">
+                            <li class="news-item">
+                                Won the 
+                                <a href="https://arxiv.org/abs/2510.03568?" target="_blank" style="color:#99ccff; text-decoration:none;">Brain Tumor Segmentation Challenge</a>
+                                at
+                                <a href="https://www.miccai.org" target="_blank" style="color:#99ccff; text-decoration:none;">MICCAI</a>
+                                in Daejeon, Sep 2025.
+                            </li>
+                            <li class="news-item">
+                                Presenting at the 
+                                <a href="https://event.fourwaves.com/mirasol/pages" target="_blank" style="color:#99ccff; text-decoration:none;">MIRASOL</a>
+                                and 
+                                <a href="https://deep-breath-miccai.github.io/deepbreath-2025/" target="_blank" style="color:#99ccff; text-decoration:none;">Deep-Breath Workshop</a>
+                                at 
+                                <a href="https://www.miccai.org" target="_blank" style="color:#99ccff; text-decoration:none;">MICCAI</a>
+                                in Daejeon, Sep 2025.
+                            </li>
+                            <li class="news-item">
+                                Attending the 
+                                <a href="https://acvss.org" target="_blank" style="color:#99ccff; text-decoration:none;">African Computer Vision Summer School</a>
+                                in Kigali, Jul 2025.
+                            </li>
+                            <li class="news-item">
+                                Hosting a tutorial on 
+                                <a href="https://toufiqmusah.github.io/ml-optimization-indabax.github.io/" target="_blank" style="color:#99ccff; text-decoration:none;">Optimisation Techniques</a>
+                                at 
+                                <a href="https://indabaxghana.com" target="_blank" style="color:#99ccff; text-decoration:none;">Ghana Data Science Summit</a>
+                                , Jun 2025.
+                            </li>
                         </ul>
                     </div>
                 </div>
+            </div>
 
-                <div class="profile-section">
-                    <div class="profile-img-container">
-                        <img class="profile-img" src="images/miccai-profile.png" alt="Toufiq Musah Profile Picture">
+            <div class="about-section">
+                <h1>About Me</h1>
+                <p class="about-text">
+                    I am an MSE Data Science Student at the University of Pennsylvania, with interests in Artificial Intelligence Applications in Health and Medicine. My research spans Computer Vision, Medical Image Analysis, Multi-Omic Data Integration, and Trustworthy AI for Healthcare Delivery in developing reliable and interpretable clinical decision support tools.
+                </p>
+                <div class="info-grid">
+                    <div class="info-section">
+                        <h2>Research Interests</h2>
+                        <ul>
+                            <li>Computer Vision</li>
+                            <li>Medical Image Analysis</li>
+                            <li>Artificial Intelligence in Medicine</li>
+                        </ul>
                     </div>
-                    <div class="social-links">
-                        <a href="https://www.linkedin.com/in/toufiq-musah-913281226/" target="_blank" rel="noopener noreferrer" title="LinkedIn">
-                            <img src="images/icons8-linkedin.svg" alt="LinkedIn">
-                        </a>
-                        <a href="https://github.com/toufiqmusah" target="_blank" rel="noopener noreferrer" title="GitHub">
-                            <img src="images/icons8-github.svg" alt="GitHub">
-                        </a>
-                        <a href="https://twitter.com/tawfi_tawfi" target="_blank" rel="noopener noreferrer" title="Twitter">
-                            <img src="images/icons8-twitter-circled.svg" alt="Twitter">
-                        </a>
-                        <a href="images/toufiq-cv.pdf" target="_blank" rel="noopener noreferrer" title="Download CV">
-                            <img src="images/cv-100.png" alt="CV">
-                        </a>
+                    <div class="info-section">
+                        <h2>Education</h2>
+                        <div class="education-item">
+                            <h3>BSc Biomedical Engineering</h3>
+                            <p>Kwame Nkrumah University of Science and Technology (KNUST)</p>
+                        </div>
+                        <div class="education-item">
+                            <h3>MSE Data Science</h3>
+                            <p>University of Pennsylvania (UPenn)</p>
+                        </div>
                     </div>
-                    <div class="icons-by">
-                        <a target="_blank" href="https://icons8.com/icon/80462/github"></a> icons by <a target="_blank"
-                            href="https://icons8.com">Icons8</a>
+                </div>
+
+                <div class="info-section">
+                    <h2>Experience</h2>
+                    <div class="experience-list">
+                        <div class="experience-item">
+                            <img src="assets/kccr.png" alt="KCCR" class="experience-logo">
+                            <div class="experience-info">
+                                <h3>Research Engineer</h3>
+                                <p><a href="https://kccr-ghana.org" target="_blank" style="color: white; text-decoration: underline;">Kumasi Centre for Collaborative Research in Tropical Medicine</a> • Oct 2024 - Oct 2025</p>
+                            </div>
+                        </div>
+                        <div class="experience-item">
+                            <img src="assets/rail.png" alt="RAIL" class="experience-logo">
+                            <div class="experience-info">
+                                <h3>Research Assistant</h3>
+                                    <p><a href="https://rail.knust.edu.gh/about-us/" target="_blank" style="color: white; text-decoration: underline;">Responsible Artificial Intelligence Lab (RAIL)</a> • Oct 2023 - Feb 2024</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
+        </div>
+    </section>
 
-            <div class="news-section">
-                <h3 class="news-heading">📣 News & Happenings</h3>
-                <div class="news-item">
-                    <div class="news-date">July 2025</div>
-                    <div class="news-content">
-                        I will be facilitating a workshop on <strong>Optimisation Techniques in Machine Learning</strong> at the 
-                        <a href="https://indabaxghana.com/" target="_blank" rel="noopener noreferrer">Ghana Data Science Summit</a>.
-                    </div>
-                </div>
+    <section id="papers">
+        <h2>Selected Publications</h2>
+
+        <div class="paper-item">
+            <div class="paper-image"><img src="paper-figures/towards.png" alt="Towards Trustworthy Breast Tumor Segmentation" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;"></div>
+            <div class="paper-details">
+                <h3>Towards Trustworthy Breast Tumor Segmentation in Ultrasound using Monte Carlo Dropout and Deep Ensembles for Epistemic Uncertainty Estimation</h3>
+                <p><strong>Toufiq Musah</strong>, Chinasa Kalaiwo, Maimoona Akram, Ubaida Napari Abdulai, Maruf Adewole, Farouk Dako, Adaobi Chiazor Emegoakor, Udunna C Anazodo, Prince Ebenezer Adjei, Confidence Raymond, Medical Image Computing in Resource Constrained Settings Workshop. 28th International MICCAI Conference, (2025), arXiv:2508.17768.</p>
+                <a href="https://arxiv.org/abs/2508.17768" target="_blank" rel="noopener noreferrer">[arXiv]</a>
             </div>
+        </div>
 
-            <div class="spacer"></div>
-        </section>
-    </main>
-    
-    <div class="floating-dino">
-        🦖 <span>focusing</span>
+        <div class="paper-item">
+            <div class="paper-image"><img src="paper-figures/how-brats.png" alt="How We Won BraTS-SSA 2025" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;"></div>
+            <div class="paper-details">
+                <h3>How We Won BraTS-SSA 2025: Brain Tumor Segmentation in the Sub-Saharan African Population Using Segmentation-Aware Data Augmentation and Model Ensembling</h3>
+                <p>Claudia Takyi Ankomah, Livingstone Eli Ayivor, Ireneaus Nyame, Leslie Wambo, Patrick Yeboah Bonsu, Aondona Moses Iorumbur, Raymond Confidence, <strong>Toufiq Musah</strong>, Brain Tumor Segmentation, and Cross-Modality Domain Adaptation for Medical Image Segmentation. 28th International MICCAI Conference, (2025), arXiv:2510.03568.</p>
+                <a href="https://arxiv.org/abs/2510.03568" target="_blank" rel="noopener noreferrer">[arXiv]</a>
+            </div>
+        </div>
+
+        <div class="paper-item">
+            <div class="paper-image"><img src="paper-figures/automated-ischemic.png" alt="Automated Segmentation of Ischemic Stroke" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;"></div>
+            <div class="paper-details">
+                <h3>Automated Segmentation of Ischemic Stroke Lesions in Non-Contrast Computed Tomography Images for Enhanced Treatment and Prognosis</h3>
+                <p><strong>Toufiq Musah</strong>, Prince Ebenezer Adjei, Kojo Obed Otoo (2024). Medical Image Computing and Computer Assisted Interventions 2240, 9.</p>
+                <a href="https://link.springer.com/chapter/10.1007/978-3-031-79103-1_8" target="_blank" rel="noopener noreferrer">[Springer]</a>
+                &nbsp;
+                <a href="https://arxiv.org/abs/2411.09402" target="_blank" rel="noopener noreferrer">[arXiv]</a>
+            </div>
+        </div>
+
+        <div class="paper-item">
+            <div class="paper-image"><img src="paper-figures/large-kernel.png" alt="Large Kernel MedNeXt for Breast Tumor Segmentation" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;"></div>
+            <div class="paper-details">
+                <h3>Large Kernel MedNeXt for Breast Tumor Segmentation and Self-Normalizing Network for pCR Classification in Magnetic Resonance Images</h3>
+                <p><strong>Toufiq Musah</strong>. Artificial Intelligence and Imaging for Diagnostic and Treatment Challenges in Breast Care: Second Deep Breast Workshop, Deep-Breath (2025)</p>
+                <a href="https://link.springer.com/chapter/10.1007/978-3-032-05559-0_8" target="_blank" rel="noopener noreferrer">[Springer]</a>
+                &nbsp;
+                <a href="https://arxiv.org/abs/2508.01831" target="_blank" rel="noopener noreferrer">[arXiv]</a>
+            </div>
+        </div>
+
+        <div class="paper-item">
+            <div class="paper-image"><img src="paper-figures/brats7.png" alt="Brain Tumor Segmentation in Sub-Sahara Africa" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;"></div>
+            <div class="paper-details">
+                <h3>Brain Tumor Segmentation in Sub-Sahara Africa with Advanced Transformer and ConvNet Methods: Fine-Tuning, Data Mixing and Ensembling</h3>
+                <p><strong>Toufiq Musah</strong>, C Amoako-Atta, JA Otu, LE Ismaila, SA Suraka, O Williams, ... Medical Image Computing in Resource Constrained Settings Workshop. 28th International MICCAI Conference, (2025), arXiv:2508.10905.</p>
+                <a href="https://arxiv.org/abs/2508.10905" target="_blank" rel="noopener noreferrer">[arXiv]</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="talks">
+        <h2>Selected Talks & Tutorials</h2>
+        <div class="talks-grid">
+        
+        <div class="talk-item">
+            <a href="https://arxiv.org/abs/2508.17768" target="_blank" class="talk-image"><img src="paper-figures/mirasol.jpeg" alt="Towards Trustworthy Breast Tumor Segmentation"></a>
+            <div class="talk-details">
+                <h3><a href="https://arxiv.org/abs/2508.17768" target="_blank">Towards Trustworthy Breast Tumor Segmentation</a></h3>
+                <p><a href="https://event.fourwaves.com/mirasol/pages" target="_blank">MIRASOL Workshop, MICCAI Conference, 2025</a></p>
+            </div>
+        </div>
+
+        <div class="talk-item">
+            <a href="https://www.youtube.com/watch?v=WyFzSAm3ya4" target="_blank" class="talk-image"><img src="https://img.youtube.com/vi/WyFzSAm3ya4/hqdefault.jpg" alt="COMPASS Webinar Thumbnail"></a>
+            <div class="talk-details">
+                <h3><a href="https://www.youtube.com/watch?v=WyFzSAm3ya4" target="_blank">Automated Medical Image Segmentation: Toward Trustworthy Clinical Tools</a></h3>
+                <p><a href="https://mailab.io/title-automated-medical-image-segmentation-and-its-implications-toward-trustworthy-clinical-tools-compass-september-2025/" target="_blank">COMPASS Webinar, 2025</a></p>
+            </div>
+        </div>
+
+        <div class="talk-item">
+            <a href="https://toufiqmusah.github.io/ml-optimization-indabax.github.io/" target="_blank" class="talk-image"><img src="paper-figures/indaba-2.jpeg" alt="Optimisation Techniques Tutorial"></a>
+            <div class="talk-details">
+                <h3><a href="https://toufiqmusah.github.io/ml-optimization-indabax.github.io/" target="_blank">Optimisation Techniques in Machine Learning</a></h3>
+                <p><a href="https://indabaxghana.com" target="_blank">Ghana Data Science Summit, Tutorial, 2025</a></p>
+            </div>
+        </div>
+
+        <!-- Tutorials & Blog Posts from resume -->
+        <div class="talk-item">
+            <a href="https://medium.com/@toufiqmusah32/a-hitchhikers-guide-to-3d-medical-image-processing-preprocessing-augmentations-dataloaders-975167d4ffe1" target="_blank" class="talk-image"> <img src="paper-figures/hitch.gif" alt="A Hitchhiker's Guide to 3D Medical Image Processing"></a>
+            <div class="talk-details">
+                <h3><a href="https://medium.com/@toufiqmusah32/a-hitchhikers-guide-to-3d-medical-image-processing-preprocessing-augmentations-dataloaders-975167d4ffe1" target="_blank">A Hitchhiker's Guide to 3D Medical Image Processing</a></h3>
+                <p><a href="https://medium.com/@toufiqmusah32/a-hitchhikers-guide-to-3d-medical-image-processing-preprocessing-augmentations-dataloaders-975167d4ffe1" target="_blank">Medium Article</a></p>
+            </div>
+        </div>
+
+        <div class="talk-item">
+            <a href="https://medium.com/@toufiqmusah32/introduction-to-torchio-for-3d-mri-processing-preprocessing-transforms-part-1-87947c339400" target="_blank" class="talk-image"><img src="paper-figures/intro-torch.gif" alt="Introduction to TorchIO for 3D MRI Processing"></a>
+            <div class="talk-details">
+                <h3><a href="https://medium.com/@toufiqmusah32/introduction-to-torchio-for-3d-mri-processing-preprocessing-transforms-part-1-87947c339400" target="_blank">Introduction to TorchIO for 3D MRI Processing</a></h3>
+                <p>
+                    <a href="https://medium.com/@toufiqmusah32/introduction-to-torchio-for-3d-mri-processing-preprocessing-transforms-part-1-87947c339400" target="_blank">Preprocessing (Part 1)</a>
+                    &nbsp;•&nbsp;
+                    <a href="https://medium.com/@toufiqmusah32/introduction-to-torchio-for-3d-mri-processing-augmentation-transforms-dataloaders-part-2-37272a97ea35" target="_blank">Augmentation & Dataloaders (Part 2)</a>
+                </p>
+            </div>
+        </div>
+
+        <div class="talk-item">
+            <a href="https://colab.research.google.com/drive/12T1Lavr3RqdJWOfeQ7-QIjPPUj2fcdYD" target="_blank" class="talk-image"><img src="paper-figures/end-to-end.png" alt="End-to-End Deep Learning Tutorial for Image Classification: Pneumonia Detection"></a>
+            <div class="talk-details">
+                <h3><a href="https://colab.research.google.com/drive/12T1Lavr3RqdJWOfeQ7-QIjPPUj2fcdYD" target="_blank">End-to-End Deep Learning Tutorial for Image Classification: Pneumonia Detection</a></h3>
+                <p><a href="https://colab.research.google.com/drive/12T1Lavr3RqdJWOfeQ7-QIjPPUj2fcdYD" target="_blank">Colab Notebook</a></p>
+            </div>
+        </div>
+
+        <div class="talk-item">
+            <a href="https://www.instructables.com/How-to-Make-an-Image-Classification-Model-Is-It-a-/" target="_blank" class="talk-image"><img src="paper-figures/pie.tiff" alt="How to Make an Image Classification Model: Is it a Pie?"></a>
+            <div class="talk-details">
+                <h3><a href="https://www.instructables.com/How-to-Make-an-Image-Classification-Model-Is-It-a-/" target="_blank">How to Make an Image Classification Model: Is it a Pie?</a></h3>
+                <p><a href="https://www.instructables.com/How-to-Make-an-Image-Classification-Model-Is-It-a-/" target="_blank">Blog Post</a></p>
+            </div>
+        </div>
+        
+        </div>
+    </section>
+
+    <!-- Lightbox for image expansion -->
+    <div class="lightbox" id="lightbox">
+        <img src="" alt="Expanded view" id="lightbox-img">
     </div>
-    
-    <script src="script.js"></script>
+
     <script>
-        // Add active class to current page nav button
-        document.addEventListener('DOMContentLoaded', function() {
-            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-            
-            // Add active class to current page nav button
-            document.querySelectorAll('.navigation-buttons button').forEach(button => {
-                const buttonUrl = button.getAttribute('onclick')?.match(/href='([^']*)'/) || 
-                                button.getAttribute('onclick')?.match(/href="([^"]*)"/);
-                
-                if (buttonUrl && buttonUrl[1].includes(currentPage)) {
-                    button.classList.add('active');
-                }
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+
+        // Lightbox functionality
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        
+        // Add click handlers to all paper images
+        document.querySelectorAll('.paper-image img').forEach(img => {
+            img.addEventListener('click', function(e) {
+                e.stopPropagation();
+                lightboxImg.src = this.src;
+                lightbox.classList.add('active');
             });
         });
         
-        function toggleDarkMode() {
-            // Toggle dark mode class
-            if (document.body.classList.contains('dark-mode')) {
-                document.body.classList.remove('dark-mode');
-                document.querySelector('#themeToggle i').className = 'fas fa-moon';
-                localStorage.setItem('darkMode', 'disabled');
-                console.log('Dark mode disabled');
-            } else {
-                document.body.classList.add('dark-mode');
-                document.querySelector('#themeToggle i').className = 'fas fa-sun';
-                localStorage.setItem('darkMode', 'enabled');
-                console.log('Dark mode enabled');
-            }
+        // Close lightbox when clicking anywhere on it
+        lightbox.addEventListener('click', function() {
+            lightbox.classList.remove('active');
+        });
+
+        // Dark mode toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        const moonIcon = document.getElementById('moon-icon');
+        const sunIcon = document.getElementById('sun-icon');
+        const htmlElement = document.documentElement;
+        
+        // Check for saved theme preference or default to light mode
+        const currentTheme = localStorage.getItem('theme') || 'light';
+        htmlElement.setAttribute('data-theme', currentTheme);
+        
+        // Set initial icon visibility
+        if (currentTheme === 'dark') {
+            moonIcon.style.display = 'none';
+            sunIcon.style.display = 'block';
         }
+        
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = htmlElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            htmlElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            
+            // Toggle icon visibility
+            if (newTheme === 'dark') {
+                moonIcon.style.display = 'none';
+                sunIcon.style.display = 'block';
+            } else {
+                moonIcon.style.display = 'block';
+                sunIcon.style.display = 'none';
+            }
+        });
     </script>
 </body>
-
 </html>

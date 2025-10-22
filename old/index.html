@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toufiq Musah</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="images/notion-face.png" width="50" height="50">
+    <style>
+        :root {
+            --bg-color: #fcfcfc;
+            --text-color: #2c3e50;
+            --heading-color: #2c3e50;
+            --highlight-color: #3498db;
+            --card-bg: #f9f9f9;
+            --card-border: #3498db;
+            --card-shadow: rgba(0, 0, 0, 0.05);
+            --news-bg: #f5f9ff;
+            --news-border: rgba(52, 152, 219, 0.3);
+            --news-date-bg: #3498db;
+            --news-date-text: white;
+            --social-bg: #f5f5f5;
+            --profile-border: #f5f5f5;
+            --icons-text: #95a5a6;
+        }
+        
+        .dark-mode {
+            --bg-color: #1a1a2e;
+            --text-color: #e0e0e0;
+            --heading-color: #f0f0f0;
+            --highlight-color: #4dabf7;
+            --card-bg: #252541;
+            --card-border: #4dabf7;
+            --card-shadow: rgba(0, 0, 0, 0.2);
+            --news-bg: #252541;
+            --news-border: rgba(77, 171, 247, 0.3);
+            --news-date-bg: #4dabf7;
+            --news-date-text: #f0f0f0;
+            --social-bg: #2a2a45;
+            --profile-border: #2a2a45;
+            --icons-text: #b0b0b0;
+        }
+        
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+        }
+        
+        header {
+            width: 100%;
+            margin-bottom: 30px;
+        }
+        
+        main {
+            flex: 1;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .navigation {
+            position: relative;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 70px 20px 30px;
+            background: transparent;
+            box-shadow: none;
+            z-index: 1000;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+            margin-top: 0;
+        }
+        
+        .home-page {
+            padding-top: 0;
+            margin-top: -40px;
+            min-height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            animation: fadeIn 0.8s ease-in-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .nav-dino {
+            display: flex;
+            align-items: center;
+            font-size: 20px;
+        }
+        
+        .nav-dino span {
+            margin-left: 10px;
+            font-weight: 600;
+            font-size: 18px;
+        }
+        
+        .floating-icon {
+            position: fixed;
+            top: 20px;
+            left: 30px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            overflow: hidden;
+            z-index: 1000;
+        }
+        
+        .floating-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .home-content-wrapper {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .brief {
+            margin-right: 40px;
+            flex: 1;
+        }
+        
+        .intro {
+            margin-bottom: 10px;
+            animation: slideIn 0.8s ease-in-out;
+        }
+        
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        
+        .intro h1 {
+            margin-bottom: 5px;
+            font-size: 2.5rem;
+            color: var(--heading-color);
+        }
+        
+        .intro h2 {
+            font-size: 2.2rem;
+            margin-top: 0;
+            color: var(--heading-color);
+        }
+        
+        .name {
+            color: var(--highlight-color);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .name::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 3px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--highlight-color);
+            border-radius: 3px;
+        }
+        
+        .bio-message {
+            margin-top: 25px;
+            max-width: 600px;
+            line-height: 1.6;
+            background-color: var(--card-bg);
+            padding: 20px 25px;
+            border-radius: 10px;
+            border-left: 4px solid var(--card-border);
+            box-shadow: var(--card-shadow);
+            animation: fadeInUp 1s ease-in-out;
+        }
+        
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .role {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: var(--heading-color);
+            margin-bottom: 15px;
+        }
+        
+        .specialties {
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+        
+        .expertise-areas {
+            list-style-type: none;
+            padding-left: 5px;
+            margin-top: 10px;
+        }
+        
+        .expertise-areas li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+        
+        .expertise-areas li:before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--highlight-color);
+            font-weight: bold;
+        }
+        
+        .highlight {
+            color: var(--highlight-color);
+            font-weight: 500;
+        }
+        
+        .profile-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            animation: fadeInRight 0.8s ease-in-out;
+        }
+        
+        @keyframes fadeInRight {
+            from { opacity: 0; transform: translateX(20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        
+        .profile-img-container {
+            width: 240px;
+            height: 240px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 5px solid var(--profile-border);
+            box-shadow: 0 8px 25px var(--card-shadow);
+            transition: all 0.5s ease;
+            position: relative;
+        }
+        
+        .profile-img-container:hover {
+            transform: scale(1.05);
+            box-shadow: 0 12px 30px var(--card-shadow);
+        }
+        
+        .profile-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            display: block;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 60px;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        
+        .social-links::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 3px;
+            background-color: var(--highlight-color);
+            border-radius: 3px;
+            opacity: 0.5;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background-color: var(--social-bg);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .social-links a img {
+            width: 24px;
+            height: 24px;
+        }
+        
+        .icons-by {
+            font-size: 0.8rem;
+            color: var(--icons-text);
+            margin-top: 10px;
+            text-align: center;
+        }
+        
+        .floating-dino {
+            position: fixed;
+            bottom: 20px;
+            right: 30px;
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+            z-index: 1000;
+        }
+        
+        .floating-dino span {
+            margin-left: 10px;
+            font-weight: 600;
+            font-size: 18px;
+        }
+        
+        .spacer {
+            height: 50px;
+        }
+        
+        .news-section {
+            max-width: 800px;
+            margin: 30px auto 20px;
+            padding: 20px 25px;
+            background-color: var(--news-bg);
+            border-radius: 10px;
+            box-shadow: 0 4px 15px var(--card-shadow);
+            animation: fadeIn 0.8s ease-in-out;
+            border-top: 3px solid var(--highlight-color);
+        }
+        
+        .news-heading {
+            font-size: 1.3rem;
+            color: var(--heading-color);
+            margin-top: 0;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--news-border);
+        }
+        
+        .news-item {
+            display: flex;
+            margin-bottom: 15px;
+            align-items: flex-start;
+        }
+        
+        .news-date {
+            background-color: var(--news-date-bg);
+            color: var(--news-date-text);
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-right: 15px;
+            min-width: 80px;
+            text-align: center;
+        }
+        
+        .news-content {
+            flex: 1;
+            line-height: 1.5;
+            font-size: 1.05rem;
+            color: var(--text-color);
+        }
+        
+        .news-content a {
+            color: var(--highlight-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .news-content a:hover {
+            color: #2980b9;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Floating elements -->
+    <div class="floating-icon">
+        <img src="images/notion-face.png" alt="Icon">
+    </div>
+    
+    <header>
+        <nav class="navigation">
+            <div class="navigation-buttons">
+                <button onclick="window.location.href='index.html'" class="active">Home</button>
+                <button onclick="window.location.href='research.html'">Research</button>
+                <button onclick="window.location.href='work-experience.html'">Work Experience</button>
+                <button onclick="window.location.href='projects.html'">Projects</button>
+                <button onclick="window.location.href='blogs-talks.html'">Blogs & Talks</button>
+                <button onclick="window.location.href='extras.html'">Extras</button>
+            </div>
+            <div class="nav-dino">
+                🦖 <span>focusing</span>
+            </div>
+        </nav>
+    </header>
+
+    <main class="content">
+        <section id="home" class="home-page">
+            <div class="dot"></div>
+
+            <div class="home-content-wrapper">
+                <div class="brief">
+                    <h4>🚧<span style="color: red;">This site is under construction</span></h4>
+                    <div class="intro">
+                        <h1>Hi,</h1>
+                        <h2><span class="im">I'm</span> <span class="name">Toufiq Musah</span></h2>
+                    </div>
+                    <div class="bio-message">
+                        <p class="role">a researcher and engineer working on developing intelligent systems for equitable, data-driven healthcare.</p>
+                        <p class="specialties">My work spans:</p>
+                        <ul class="expertise-areas">
+                            <li>Medical Imaging (<span class="highlight">neuroimaging</span>) Analysis</li>
+                            <li>Language Modeling for Healthcare Applications</li>
+                            <li>Health AI for Underserved Communities</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="profile-section">
+                    <div class="profile-img-container">
+                        <img class="profile-img" src="images/miccai-profile.png" alt="Toufiq Musah Profile Picture">
+                    </div>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/in/toufiq-musah-913281226/" target="_blank" rel="noopener noreferrer" title="LinkedIn">
+                            <img src="images/icons8-linkedin.svg" alt="LinkedIn">
+                        </a>
+                        <a href="https://github.com/toufiqmusah" target="_blank" rel="noopener noreferrer" title="GitHub">
+                            <img src="images/icons8-github.svg" alt="GitHub">
+                        </a>
+                        <a href="https://twitter.com/tawfi_tawfi" target="_blank" rel="noopener noreferrer" title="Twitter">
+                            <img src="images/icons8-twitter-circled.svg" alt="Twitter">
+                        </a>
+                        <a href="images/toufiq-cv.pdf" target="_blank" rel="noopener noreferrer" title="Download CV">
+                            <img src="images/cv-100.png" alt="CV">
+                        </a>
+                    </div>
+                    <div class="icons-by">
+                        <a target="_blank" href="https://icons8.com/icon/80462/github"></a> icons by <a target="_blank"
+                            href="https://icons8.com">Icons8</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="news-section">
+                <h3 class="news-heading">📣 News & Happenings</h3>
+                <div class="news-item">
+                    <div class="news-date">July 2025</div>
+                    <div class="news-content">
+                        I will be facilitating a workshop on <strong>Optimisation Techniques in Machine Learning</strong> at the 
+                        <a href="https://indabaxghana.com/" target="_blank" rel="noopener noreferrer">Ghana Data Science Summit</a>.
+                    </div>
+                </div>
+            </div>
+
+            <div class="spacer"></div>
+        </section>
+    </main>
+    
+    <div class="floating-dino">
+        🦖 <span>focusing</span>
+    </div>
+    
+    <script src="script.js"></script>
+    <script>
+        // Add active class to current page nav button
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+            
+            // Add active class to current page nav button
+            document.querySelectorAll('.navigation-buttons button').forEach(button => {
+                const buttonUrl = button.getAttribute('onclick')?.match(/href='([^']*)'/) || 
+                                button.getAttribute('onclick')?.match(/href="([^"]*)"/);
+                
+                if (buttonUrl && buttonUrl[1].includes(currentPage)) {
+                    button.classList.add('active');
+                }
+            });
+        });
+        
+        function toggleDarkMode() {
+            // Toggle dark mode class
+            if (document.body.classList.contains('dark-mode')) {
+                document.body.classList.remove('dark-mode');
+                document.querySelector('#themeToggle i').className = 'fas fa-moon';
+                localStorage.setItem('darkMode', 'disabled');
+                console.log('Dark mode disabled');
+            } else {
+                document.body.classList.add('dark-mode');
+                document.querySelector('#themeToggle i').className = 'fas fa-sun';
+                localStorage.setItem('darkMode', 'enabled');
+                console.log('Dark mode enabled');
+            }
+        }
+    </script>
+</body>
+
+</html>
