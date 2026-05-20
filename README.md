@@ -1,4 +1,4 @@
-## 👋 Hi, I'm Toufiq Musah
+## 👋 Hi, I'm Toufiq ...
 
 **MSE Data Science @ University of Pennsylvania** | AI in Healthcare & Medical Imaging
 
@@ -11,5 +11,5 @@
 - 🥇 **Brain Tumor Segmentation Challenge (BraTS-SSA) 2025** — First Place at MICCAI 2025  
   [Paper](https://link.springer.com/chapter/10.1007/978-3-032-16365-3_27)
 
-- 🥇 **InstaDeep Deep Learning Indaba Hackathon** — Biomass Carbon Estimation through Dense Regression  
+- 🥈 **InstaDeep Deep Learning Indaba Hackathon** — Biomass Carbon Estimation through Dense Regression  
   [Article](https://instadeep.com/2025/08/hand-in-hand-for-africas-ai-future-instadeep-at-deep-learning-indaba-2025/)
